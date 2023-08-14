@@ -11,7 +11,7 @@ class llamaBot:
     """Voice chat bot based on Whisper and oobabooga"""
 
     def __init__(self):
-        self.whisper_model_type = "base"
+        self.whisper_model_type = "medium"
 
         self.voice_recognizer = sr.Recognizer()
         self.mic = sr.Microphone()
