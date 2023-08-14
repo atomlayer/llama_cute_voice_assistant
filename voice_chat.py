@@ -88,7 +88,6 @@ class llamaBot:
 
 
 if __name__ == "__main__":
-
     chat_bot = llamaBot()
     while True:
         chat_bot.run()
