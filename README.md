@@ -1,4 +1,4 @@
-llama_cute_voice_assistent
+# llama_cute_voice_assistent
 
 Disclaimer: This is a pre-alpha version.
 
@@ -8,7 +8,7 @@ Solution diagram:
 
 ![](media/2858db90ced343578868eeafaf30ee79.png)
 
-How to install:
+# How to install:
 
 *This guide may not be the most detailed. It will need to be improved.*
 
