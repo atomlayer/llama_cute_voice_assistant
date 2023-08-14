@@ -47,7 +47,7 @@ Instruction - <https://www.youtube.com/watch?v=_JXbvSTGPoo>
 <br>
 ## Step 4 - Install llama_cute_voice_assistent
 
-\- git clone
+\- git clone https://github.com/atomlayer/llama_cute_voice_assistent.git
 
 \- Install the conda environment
 <br>
