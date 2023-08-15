@@ -45,12 +45,14 @@ Instruction - <https://www.youtube.com/watch?v=_JXbvSTGPoo>
 4) Press start button
 <br>
 <br>
+
 ## Step 4 - Install llama_cute_voice_assistent
 
 1) git clone https://github.com/atomlayer/llama_cute_voice_assistent.git
 2) Install the conda environment
 <br>
 <br>
+
 ## Step 5 - Change the settings in the settings.py file
 
 1) Replace the wake words.
