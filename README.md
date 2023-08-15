@@ -27,11 +27,13 @@ Solution diagram:
 4) On the Chat settings \> Character tab: set your character name and description.
 <br>
 <br>
+
 ## Step 2 - Install Realtime Voice Changer
 
 Instruction - <https://www.youtube.com/watch?v=_JXbvSTGPoo>
 <br>
 <br>
+
 ## Step 3 – Install the virtual microphone
 
 1) Download and install VB-CABLE Virtual Audio Device <https://vb-audio.com/Cable/>
