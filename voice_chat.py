@@ -1,9 +1,8 @@
-from time import sleep
-
 import speech_recognition as sr
 from oobabooga_api import generate
 import pyttsx3
 from silero_en import run_silero_en
+from split_text_manager import split_text
 from virtual_microphone import run_virtual_microphone
 
 
@@ -48,36 +47,12 @@ class llamaBot:
             answer = "ERROR: Wrong Response"
         return answer
 
-    max_silero_text_length = 140
-
-    # to do: handle the situation when one word is 140 characters long
-    def _split_text(self, answer):
-        if len(answer) < self.max_silero_text_length:
-            return [answer]
-
-        text_array = answer.split(" ")
-
-        current_text_array = []
-        output_array = []
-        for n in text_array:
-            if len(" ".join(current_text_array + [n])) < self.max_silero_text_length:
-                current_text_array.append(n)
-            else:
-                output_array.append(" ".join(current_text_array))
-                current_text_array = []
-                current_text_array.append(n)
-
-        if len(current_text_array) > 0:
-            output_array.append(" ".join(current_text_array))
-
-        return output_array
-
     def _text_to_voice(self, answer):
         """Convert text to voice using TTS tools"""
 
         self.tts_engine.runAndWait()
 
-        answer_array = self._split_text(answer)
+        answer_array = split_text(answer)
 
         for n in answer_array:
             print("run_silero_en()")
