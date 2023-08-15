@@ -22,39 +22,40 @@ Solution diagram:
 *Installation procedure for Windows*
 
 1) Install git https://git-scm.com/downloads
-2) Install miniconda https://docs.conda.io/en/latest/miniconda.html
-3) Open miniconda console
-4) Create new conda environment
+2) Install cudatoolkit (You should only choose versions of cuda that pytorch supports. See supported versions here https://pytorch.org/get-started/locally/) 
+3) Install miniconda https://docs.conda.io/en/latest/miniconda.html
+4) Open miniconda console
+5) Create new conda environment
 
 ```
 conda create --name llama_cute_voice_assistent python=3.11
 ```
 
-5) Activate conda environment
+6) Activate conda environment
 
 ```
 conda activate llama_cute_voice_assistent
 ```
 
-6) Clone project
+7) Clone project
 
 ```
 git clone https://github.com/atomlayer/llama_cute_voice_assistent.git
 ```
 
-7) Go to project directory
+8) Go to project directory
 
 ```
 cd llama_cute_voice_assistent
 ```
 
 
-8) Install pytorch 
+9) Install pytorch 
 - Go to https://pytorch.org/get-started/locally/
 - Generate a command to install pytorch for your system (the command will be like this: pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 )
 - Execute the command
 
-9) Install the libraries
+10) Install the libraries
 
 ```
 pip install SpeechRecognition==3.10.0 
