@@ -23,7 +23,7 @@ class llamaBot:
 
 
     def _get_wake_word(self, input_words):
-        for n in settings.names:
+        for n in settings.wake_words:
             if n.lower() in input_words.lower():
                 return n
 
@@ -68,10 +68,7 @@ class llamaBot:
         answer_array = split_text(answer)
 
         for n in answer_array:
-            print("run_silero_en()")
             run_silero_en(n)
-
-            print("run_virtual_microphone()")
             run_virtual_microphone()
 
 
@@ -79,3 +76,4 @@ if __name__ == "__main__":
     chat_bot = llamaBot()
     while True:
         chat_bot.run()
+
