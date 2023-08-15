@@ -1,9 +1,14 @@
 import speech_recognition as sr
+
+import settings
 from oobabooga_api import generate
 import pyttsx3
 from silero_en import run_silero_en
 from split_text_manager import split_text
 from virtual_microphone import run_virtual_microphone
+
+# import warnings
+# warnings.filterwarnings("ignore", message=".*The 'nopython' keyword.*")
 
 
 class llamaBot:
@@ -16,13 +21,21 @@ class llamaBot:
         self.mic = sr.Microphone()
         self.tts_engine = pyttsx3.init()
 
+
+    def _get_wake_word(self, input_words):
+        for n in settings.names:
+            if n.lower() in input_words.lower():
+                return n
+
     def run(self):
         """Run the listen-think-response loop"""
         input_words = self._voice_to_text()
+
         print("===> question:", input_words)
-        if "miku" in input_words.lower() or "miko" in input_words.lower() \
-                or "mikko" in input_words.lower():
-            input_words = input_words[4:]
+        wake_word = self._get_wake_word(input_words)
+
+        if wake_word:
+            input_words = input_words[len(wake_word):]
             answer = self.run_llm(input_words)
             print("==> answer:", answer)
             self._text_to_voice(answer)
