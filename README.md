@@ -16,7 +16,61 @@ Solution diagram:
 *This guide may not be the most detailed. It will need to be improved.*
 <br>
 <br>
-## Step 1 - Install oobabooga Text generation web UI
+
+## Step 1 - Install llama_cute_voice_assistent
+
+*Installation procedure for Windows*
+
+1) Install git https://git-scm.com/downloads
+2) Install miniconda https://docs.conda.io/en/latest/miniconda.html
+3) Open miniconda console
+4) Create new conda environment
+
+```
+conda create --name llama_cute_voice_assistent python=3.11
+```
+
+5) Activate conda environment
+
+```
+conda activate llama_cute_voice_assistent
+```
+
+6) Clone project
+
+```
+git clone https://github.com/atomlayer/llama_cute_voice_assistent.git
+```
+
+7) Go to project directory
+
+```
+cd llama_cute_voice_assistent
+```
+
+
+8) Install pytorch 
+- Go to https://pytorch.org/get-started/locally/
+- Generate a command to install pytorch for your system (the command will be like this: pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 )
+- Execute the command
+
+9) Install the libraries
+
+```
+pip install SpeechRecognition==3.10.0 
+pip install pyttsx3==2.90 
+pip install soundfile==0.12.1
+pip install simpleaudio==1.0.4
+pip install pygame==2.5.1
+conda install PyAudio
+pip install openai-whisper --no-cache-dir
+pip install omegaconf==2.3.0
+```
+<br>
+<br>
+
+
+## Step 2 - Install oobabooga Text generation web UI
 
 1) [https://github.com/oobabooga/text-generation-webui\#one-click-installers](https://github.com/oobabooga/text-generation-webui#one-click-installers)
 
@@ -28,13 +82,13 @@ Solution diagram:
 <br>
 <br>
 
-## Step 2 - Install Realtime Voice Changer
+## Step 3 - Install Realtime Voice Changer
 
 Instruction - <https://www.youtube.com/watch?v=_JXbvSTGPoo>
 <br>
 <br>
 
-## Step 3 – Install the virtual microphone
+## Step 4 – Install the virtual microphone
 
 1) Download and install VB-CABLE Virtual Audio Device <https://vb-audio.com/Cable/>
 
@@ -48,12 +102,6 @@ Instruction - <https://www.youtube.com/watch?v=_JXbvSTGPoo>
 <br>
 <br>
 
-## Step 4 - Install llama_cute_voice_assistent
-
-1) git clone https://github.com/atomlayer/llama_cute_voice_assistent.git
-2) Install the conda environment
-<br>
-<br>
 
 ## Step 5 - Change the settings in the settings.py file
 
