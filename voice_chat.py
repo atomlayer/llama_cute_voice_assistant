@@ -194,9 +194,6 @@ def main():
                 # If we detected a pause between recordings, add a new item to our transcripion.
                 # Otherwise edit the existing one.
                 if phrase_complete:
-
-                    # wake_word = get_wake_word(text)
-
                     if wake_word:
                         input_words = clear_input_text(text, wake_word)
                         transcription.append("You: " + input_words)

@@ -85,7 +85,26 @@ pip install omegaconf==2.3.0
 
 ## Step 3 - Install Realtime Voice Changer
 
-Instruction - <https://www.youtube.com/watch?v=_JXbvSTGPoo>
+Detailed instruction - <https://www.youtube.com/watch?v=_JXbvSTGPoo>
+<br>
+
+1) Download https://huggingface.co/wok000/vcclient000/blob/main/MMVCServerSIO_win_onnxgpu-cuda_v.1.5.3.11.zip
+
+2) Unpack the archive
+
+3) Run start_http.bat
+
+4) Join the AI Hub Discord: https://discord.gg/aihub
+
+5) Go to the search-models channel
+
+6) Find and download the model you like
+
+7) Click the edit button in the Realtime Voice Changer Client
+
+8) Upload the model to a free cell
+
+9) Adjust the best TUNE parameter for your voice.
 <br>
 <br>
 
