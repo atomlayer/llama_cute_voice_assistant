@@ -15,7 +15,7 @@ Solution diagram:
 <br>
 <br>
 
-## Step 1 - Install llama_cute_voice_assistent
+## Step 1 - Install llama_cute_voice_assistant
 
 *Installation procedure for Windows*
 
@@ -26,25 +26,25 @@ Solution diagram:
 5) Create new conda environment
 
 ```
-conda create --name llama_cute_voice_assistent python=3.11
+conda create --name llama_cute_voice_assistant python=3.11
 ```
 
 6) Activate conda environment
 
 ```
-conda activate llama_cute_voice_assistent
+conda activate llama_cute_voice_assistant
 ```
 
 7) Clone project
 
 ```
-git clone https://github.com/atomlayer/llama_cute_voice_assistent.git
+git clone https://github.com/atomlayer/llama_cute_voice_assistant.git
 ```
 
 8) Go to project directory
 
 ```
-cd llama_cute_voice_assistent
+cd llama_cute_voice_assistant
 ```
 
 
