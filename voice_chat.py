@@ -37,17 +37,7 @@ logging.getLogger("tensorflow").setLevel(logging.ERROR)
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--whisper_model", default="medium", help="Model to use",
-                        choices=["tiny", "base", "small", "medium", "large"])
-    parser.add_argument("--non_english", action='store_true',
-                        help="Don't use the english model.")
-    parser.add_argument("--energy_threshold", default=1000,
-                        help="Energy level for mic to detect.", type=int)
-    parser.add_argument("--record_timeout", default=2,
-                        help="How real time the recording is in seconds.", type=float)
-    parser.add_argument("--phrase_timeout", default=3,
-                        help="How much empty space between recordings before we "
-                             "consider it a new line in the transcription.", type=float)
+
     if 'linux' in platform:
         parser.add_argument("--default_microphone", default='pulse',
                             help="Default microphone name for SpeechRecognition. "
@@ -62,7 +52,7 @@ def main():
     data_queue = Queue()
     # We use SpeechRecognizer to record our audio because it has a nice feauture where it can detect when speech ends.
     recorder = sr.Recognizer()
-    recorder.energy_threshold = args.energy_threshold
+    recorder.energy_threshold = settings.energy_threshold
     # Definitely do this, dynamic energy compensation lowers the energy threshold dramtically to a point where the SpeechRecognizer never stops recording.
     recorder.dynamic_energy_threshold = False
 
@@ -89,13 +79,13 @@ def main():
     print("Whisper model is loading...")
 
     # Load / Download model
-    model = args.whisper_model
-    if args.whisper_model != "large" and not args.non_english:
+    model = settings.whisper_model
+    if settings.whisper_model != "large" and not settings.non_english:
         model = model + ".en"
     audio_model = whisper.load_model(model)
 
-    record_timeout = args.record_timeout
-    phrase_timeout = args.phrase_timeout
+    record_timeout = settings.record_timeout
+    phrase_timeout = settings.phrase_timeout
 
     temp_file = NamedTemporaryFile().name
     transcription = []
