@@ -1,6 +1,4 @@
-# llama_cute_voice_assistent
-
-Disclaimer: This is a pre-alpha version.
+# llama_cute_voice_assistant
 
 Motivation: Many voice assistants with artificial intelligence have an unpleasant voice. While it may be a matter of personal preference. I aim to create a more human assistant that allows you to plug in cute anime character voices and vtuber voices.
 <br>
