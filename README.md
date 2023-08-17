@@ -66,6 +66,7 @@ pip install pygame==2.5.1
 conda install PyAudio
 pip install openai-whisper --no-cache-dir
 pip install omegaconf==2.3.0
+pip install git+https://github.com/openai/whisper.git
 ```
 <br>
 <br>
