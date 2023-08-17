@@ -118,3 +118,7 @@ Instruction - <https://www.youtube.com/watch?v=_JXbvSTGPoo>
 python voice_chat.py
 ```
 3) Say the wake word and the command for your assistant.
+
+
+# Links
+https://github.com/davabase/whisper_real_time

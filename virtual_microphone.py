@@ -1,4 +1,6 @@
-from pygame import mixer, _sdl2 as devicer
+
+
+# from pygame import mixer, _sdl2 as devicer
 
 # mixer.init() # Initialize the mixer, this will allow the next command to work
 #
