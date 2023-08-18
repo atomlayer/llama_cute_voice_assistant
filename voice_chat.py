@@ -1,12 +1,14 @@
 #! python3.11
 
 import warnings
+
 warnings.filterwarnings("ignore", message=".*The 'nopython' keyword.*")
 warnings.filterwarnings("ignore", message=".*Using cache found in.*")
 warnings.filterwarnings("ignore", message=".*loaded more than 1 DLL from.*")
 warnings.filterwarnings("ignore", message=".*RNN module weights are not part of single contiguous chunk of memory.*")
 
 from os import environ
+
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 
 import argparse
@@ -30,9 +32,7 @@ from virtual_microphone import run_virtual_microphone
 import re
 import logging
 
-
 logging.getLogger("tensorflow").setLevel(logging.ERROR)
-
 
 
 def main():
@@ -158,17 +158,21 @@ def main():
         # Flush stdout.
         print('', end='', flush=True)
 
+    is_first = True
+
     while True:
         try:
             now = datetime.utcnow()
             # Pull raw recorded audio from the queue.
             if not data_queue.empty():
                 phrase_complete = False
+
                 # If enough time has passed between recordings, consider the phrase complete.
                 # Clear the current working audio buffer to start over with the new data.
                 if phrase_time and now - phrase_time > timedelta(seconds=phrase_timeout):
                     last_sample = bytes()
                     phrase_complete = True
+
                 # This is the last time we received new audio data from the queue.
                 phrase_time = now
 
@@ -193,7 +197,8 @@ def main():
 
                 # If we detected a pause between recordings, add a new item to our transcripion.
                 # Otherwise edit the existing one.
-                if phrase_complete:
+                if phrase_complete or is_first:
+                    is_first = False
                     if wake_word:
                         input_words = clear_input_text(text, wake_word)
                         transcription.append("You: " + input_words)

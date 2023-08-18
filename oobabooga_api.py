@@ -29,14 +29,17 @@ def generate(user_input):
         'mode': 'chat',  # Valid options: 'chat', 'chat-instruct', 'instruct'
         'character': settings.oobabooga_api_name,
         'instruction_template': None,  # Will get autodetected if unset
-        'context_instruct': f'{settings.oobabooga_api_name} is a sweet little catgirl who loves you.',  # Optional
+        'context_instruct': None,  # Optional
+        # 'context_instruct': f'{settings.oobabooga_api_name} is a sweet little catgirl who loves you.',  # Optional
         'your_name': 'You',
 
         'regenerate': False,
         '_continue': False,
         'stop_at_newline': False,
         'chat_generation_attempts': 1,
-        'chat-instruct_command': 'Continue the chat dialogue below. Write a single reply for the character "<|character|>".\n\n<|prompt|>',
+        'chat-instruct_command': None,
+        # 'chat-instruct_command': 'Continue the chat dialogue below. Write a single reply for the character "<|character|>".\n\n<|prompt|>',
+
 
         # Generation params. If 'preset' is set to different than 'None', the values
         # in presets/preset-name.yaml are used instead of the individual numbers.
