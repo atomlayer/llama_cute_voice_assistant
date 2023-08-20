@@ -26,7 +26,7 @@ from sys import platform
 
 import settings
 from oobabooga_api import generate
-from silero_en import SileroModel
+from silero import SileroModel
 from split_text_manager import split_text
 from virtual_microphone import run_virtual_microphone
 import re
