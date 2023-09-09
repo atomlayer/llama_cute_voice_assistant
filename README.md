@@ -124,7 +124,13 @@ Detailed instruction - <https://www.youtube.com/watch?v=_JXbvSTGPoo>
 
 ## Step 5 - Change the settings in the settings.py file
 
-1) Replace the wake words.
+1) Replace oobabooga_api_name and wake words.<br>
+   oobabooga_api_name - the name of one of your characters in oobabooga text generation web UI (Paremeters > Character tab)
+```
+oobabooga_api_name = "Lisa"
+wake_words = ["lisa"]
+```
+
 <br>
 <br>
 

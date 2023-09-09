@@ -2,6 +2,8 @@
 
 import warnings
 
+from fdict import fdict
+
 warnings.filterwarnings("ignore", message=".*The 'nopython' keyword.*")
 warnings.filterwarnings("ignore", message=".*Using cache found in.*")
 warnings.filterwarnings("ignore", message=".*loaded more than 1 DLL from.*")
@@ -80,7 +82,7 @@ def main():
 
     # Load / Download model
     model = settings.whisper_model
-    if settings.whisper_model != "large" and not settings.non_english:
+    if settings.whisper_model != "large":
         model = model + ".en"
     audio_model = whisper.load_model(model)
 
@@ -88,7 +90,17 @@ def main():
     phrase_timeout = settings.phrase_timeout
 
     temp_file = NamedTemporaryFile().name
+
+
+    #load chat history
+    history = fdict(settings.history_file_name)
+    if not history:
+        history = {"internal": [], "visible": []}
     transcription = []
+    for n in history["visible"]:
+        transcription.append("You: " + n[0])
+        transcription.append(f"{settings.oobabooga_api_name}: " + n[1])
+
 
     with source:
         recorder.adjust_for_ambient_noise(source)
@@ -158,6 +170,23 @@ def main():
         # Flush stdout.
         print('', end='', flush=True)
 
+    def delete_all_history(text_data, transcription_list):
+        if settings.delete_history in text_data.lower():
+            history = fdict(settings.history_file_name, {"internal": [], "visible": []})
+            transcription_list.clear()
+
+    def delete_last_message(text_data, transcription_list):
+        if settings.delete_the_last_message in text_data.lower():
+            history = fdict(settings.history_file_name)
+            if history["internal"]:
+                history["internal"].pop()
+                history["visible"].pop()
+                history.save_to_json()
+                transcription_list.pop()
+                transcription_list.pop()
+
+
+
     is_first = True
 
     while True:
@@ -207,6 +236,9 @@ def main():
                         transcription.append(f"{settings.oobabooga_api_name}: " + answer)
                         console_write()
                         text_to_voice(answer)
+                    else:
+                        delete_all_history(text, transcription)
+                        delete_last_message(text, transcription)
 
                 console_write(text_data=text)
 

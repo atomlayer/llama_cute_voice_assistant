@@ -6,31 +6,21 @@ import requests
 import settings
 from fdict import fdict
 
-# For local streaming, the websockets are hosted without ssl - http://
-HOST = 'localhost:5000'
-URI = f'http://{HOST}/api/v1/chat'
-
-# For reverse-proxied streaming, the remote will likely host with ssl - https://
-# URI = 'https://your-uri-here.trycloudflare.com/api/v1/chat'
-
-history_file_name = "history.json"
+URI = f'http://{settings.oobabooga_api_host}/api/v1/chat'
 
 
 def generate(user_input):
 
-    history = fdict(history_file_name)
-    if not history:
-        history = {"internal": [], "visible": []}
+    history = fdict(settings.history_file_name)
 
     request = {
         'user_input': user_input,
-        'max_new_tokens': 300,
+        'max_new_tokens': 150,
         'history': history,
         'mode': 'chat',  # Valid options: 'chat', 'chat-instruct', 'instruct'
         'character': settings.oobabooga_api_name,
         'instruction_template': None,  # Will get autodetected if unset
         'context_instruct': None,  # Optional
-        # 'context_instruct': f'{settings.oobabooga_api_name} is a sweet little catgirl who loves you.',  # Optional
         'your_name': 'You',
 
         'regenerate': False,
@@ -38,7 +28,6 @@ def generate(user_input):
         'stop_at_newline': False,
         'chat_generation_attempts': 1,
         'chat-instruct_command': None,
-        # 'chat-instruct_command': 'Continue the chat dialogue below. Write a single reply for the character "<|character|>".\n\n<|prompt|>',
 
 
         # Generation params. If 'preset' is set to different than 'None', the values
@@ -67,7 +56,7 @@ def generate(user_input):
 
         'seed': -1,
         'add_bos_token': True,
-        'truncation_length': 2048,
+        'truncation_length': 4096,
         'ban_eos_token': False,
         'skip_special_tokens': True,
         'stopping_strings': []
@@ -77,5 +66,5 @@ def generate(user_input):
 
     if response.status_code == 200:
         result = response.json()['results'][0]['history']
-        history = fdict(history_file_name, result)
+        history = fdict(settings.history_file_name, result)
         return result['visible'][-1][1]
