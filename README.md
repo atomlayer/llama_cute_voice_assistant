@@ -65,6 +65,7 @@ conda install PyAudio
 pip install openai-whisper --no-cache-dir
 pip install omegaconf==2.3.0
 pip install git+https://github.com/openai/whisper.git
+conda install -c conda-forge ffmpeg
 ```
 <br>
 <br>
